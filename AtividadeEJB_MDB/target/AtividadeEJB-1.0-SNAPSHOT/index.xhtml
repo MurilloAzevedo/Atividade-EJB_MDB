@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Jogo de EJB</title>
+    </h:head>
+    <h:body>
+        <form>
+            Insira o seu nome:
+            <h:inputText value="#{jsfRanking.nome}"/>
+            <h:column>
+                <h:commandButton value="add"
+                                 action="#{jsfRanking.update()}"/>
+            </h:column>
+            <br/>
+            <h:column>
+                O calulo é o seguinte:
+                <h:outputText value="#{jsfRanking.valor[0]}"/>
+            </h:column>
+            <h:column>
+                +
+                <h:outputText value="#{jsfRanking.valor[1]}"/>
+            </h:column>
+            <br/>
+           
+            Qual é o resultado?
+            <h:inputText value="#{jsfRanking.resultado}"/>
+                <h:column>
+                    <h:commandButton value="OK"
+                                 action="#{jsfRanking.calculo()}"/>
+                </h:column>   
+            <h:form>
+                <br/>
+                ---------------Ranking---------------
+                <h:dataTable value="#{jsfRanking.all}" var="Ranking">
+                    <h:column>
+                        <h:outputText value="#{Ranking.nome}"/>
+                    </h:column>
+                    <h:column>
+                        <h:outputText value="#{Ranking.pontos}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </form>
+    </h:body>
+</html>
